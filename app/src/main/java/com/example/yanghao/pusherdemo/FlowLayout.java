@@ -32,20 +32,20 @@ public class FlowLayout extends ViewGroup {
     /**
      * 记录每一行地行高,用于layout
      */
-    private List<Integer> lineHeights = new ArrayList<>();
+    private List<Integer> lineHeights;
+
+    /**
+     * 每一行的子view
+     */
+    List<View> lineViews;
 
     public FlowLayout(Context context) {
-        super(context);
-
-        mHorizontalSpacing = DisplayUtil.dip2px(context,15);
-        mVerticalSpacing = DisplayUtil.dip2px(context,8);
+        this(context,null);
     }
 
     public FlowLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
 
-        mHorizontalSpacing = DisplayUtil.dip2px(context,15);
-        mVerticalSpacing = DisplayUtil.dip2px(context,8);
     }
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -53,65 +53,90 @@ public class FlowLayout extends ViewGroup {
 
         mHorizontalSpacing = DisplayUtil.dip2px(context,15);
         mVerticalSpacing = DisplayUtil.dip2px(context,8);
+
+        init();
+    }
+
+    private void init() {
+        lineViews = new ArrayList<>();
+        lineHeights = new ArrayList<>();
+        allLines = new ArrayList<>();
+    }
+
+    private void clean(){
+        lineViews.clear();
+        lineHeights.clear();
+        allLines.clear();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        initMeasureParams();
-        //测量子view
-        int childCount = getChildCount();
+
+        clean();
+        // 测量子view
+        // 获取子view的个数
+        int childCount = this.getChildCount();
         int paddingLeft = getPaddingLeft();
         int paddingRight = getPaddingRight();
         int paddingTop = getPaddingTop();
         int paddingBottom = getPaddingBottom();
 
+        // 整个流式布局的宽度和高度
+        // 宽度是行中宽度的最大值
         int parentNeededWidth = 0;
+        // 高度是行高的累加
         int parentNeededHeight = 0;
 
+        //获取限制值
         int selfWidth = MeasureSpec.getSize(widthMeasureSpec);
         int selfHeight = MeasureSpec.getSize(heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
-        List<View> lineViews = new ArrayList<>();
-
+        // 记录当前行的宽高
+        // 宽度是当前行的所有子view之和
         int lineWidthUsed = 0;
+        // 高度是当前行所有子view中高度的最大值
         int lineHeight = 0;
 
+        // 先测量子view，再根据子view，测量自己的
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
+            measureChild(childView,widthMeasureSpec,heightMeasureSpec);
 
-            LayoutParams childLayoutParams = childView.getLayoutParams();
-            int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec,paddingLeft + paddingRight,childLayoutParams.width);
-            int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec,paddingLeft + paddingRight,childLayoutParams.height);
-            childView.measure(childWidthMeasureSpec,childHeightMeasureSpec);
-
-            //获取child的测量宽高，这里请不要使用getWidth，因为这个方法是在onLayout之后才会有值
+            // 获取child的测量宽高，这里请不要使用getWidth，因为这个方法是在onLayout之后才会有值
             int childMeasureWidth = childView.getMeasuredWidth();
             int childMeasureHeight = childView.getMeasuredHeight();
 
-            if (childMeasureWidth + lineWidthUsed + mHorizontalSpacing > selfWidth){
+            // 已经放入的宽度如果大于父容器宽度，就换行
+            if (childMeasureWidth + lineWidthUsed > selfWidth){
                 allLines.add(lineViews);
-                lineHeights.add(lineHeight);
-                //换行之后我们需要加上之前的宽度和行距和之前已经使用的宽度，高度同理
-                parentNeededHeight = parentNeededHeight + lineHeight + mVerticalSpacing;
-                parentNeededWidth = Math.max(parentNeededWidth,lineWidthUsed + mHorizontalSpacing);
-
+                // 创建新的一行
                 lineViews = new ArrayList<>();
+                //换行之后我们需要加上之前的宽度和行距和之前已经使用的宽度，高度同理
+                parentNeededHeight += lineHeight;
+                parentNeededWidth = Math.max(parentNeededWidth,lineWidthUsed);
+
+                lineHeights.add(lineHeight);
                 lineWidthUsed = 0;
                 lineHeight = 0;
             }
 
             //记录每一个child
             lineViews.add(childView);
-
             //记录每一行使用的size
-            lineWidthUsed = lineWidthUsed + childMeasureWidth + mHorizontalSpacing;
-
+            lineWidthUsed += childMeasureWidth;
             //记录每一行的行高
             lineHeight = Math.max(lineHeight,childMeasureHeight);
-        }
 
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+            // 处理最后一行的显示
+            if (i == childCount - 1){
+                parentNeededHeight += lineHeight;
+                parentNeededWidth = Math.max(parentNeededWidth,lineWidthUsed);
+                lineHeights.add(lineHeight);
+                allLines.add(lineViews);
+            }
+        }
 
         int realWidth = (widthMode == MeasureSpec.EXACTLY) ? selfWidth : parentNeededWidth;
         int realHeight = (heightMode == MeasureSpec.EXACTLY) ? selfHeight : parentNeededHeight;
@@ -124,12 +149,14 @@ public class FlowLayout extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int lineCount = allLines.size();
 
-        int curLeft = getPaddingLeft();
-        int curTop = getPaddingTop();
+        int curLeft = 0;
+        int curTop = 0;
 
+        // 处理每一行中的view
         for (int i = 0; i < lineCount; i++) {
             List<View> lineView = allLines.get(i);
             int lineHeight = lineHeights.get(i);
+            // 一行的处理
             for (int i1 = 0; i1 < lineView.size(); i1++) {
                 View view = lineView.get(i1);
 
@@ -138,10 +165,10 @@ public class FlowLayout extends ViewGroup {
 
                 view.layout(curLeft, curTop,right,bottom);
 
-                curLeft = right + mHorizontalSpacing;
+                curLeft += view.getMeasuredWidth();
             }
-            curLeft = getPaddingLeft();
-            curTop = curTop + lineHeight + mVerticalSpacing;
+            curLeft = 0;
+            curTop += lineHeight;
         }
 
     }
@@ -149,19 +176,5 @@ public class FlowLayout extends ViewGroup {
     @Override
     public boolean equals(@Nullable Object obj) {
         return super.equals(obj);
-    }
-
-    private void initMeasureParams(){
-        if(allLines != null){
-            allLines.clear();
-        }else {
-            allLines = new ArrayList<>();
-        }
-
-        if (lineHeights != null){
-            lineHeights.clear();
-        }else {
-            lineHeights = new ArrayList<>();
-        }
     }
 }
