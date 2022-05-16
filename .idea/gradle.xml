@@ -12,10 +12,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/colortrackview" />
+            <option value="$PROJECT_DIR$/eventprimer" />
             <option value="$PROJECT_DIR$/fishdemo" />
             <option value="$PROJECT_DIR$/photoview" />
           </set>
         </option>
+        <option name="resolveExternalAnnotations" value="false" />
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

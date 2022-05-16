@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.eventprimer.MyViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.example.eventprimer.MyViewGroup2
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:id="@+id/mvg_2"
+        android:layout_height="500dp">
+        <com.example.eventprimer.MyView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mv_1"
+            android:text="Hello World!" />
+    </com.example.eventprimer.MyViewGroup2>
+
+    <com.example.eventprimer.MyViewGroup3
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:id="@+id/mvg_3"
+        android:background="@color/white">
+        <com.example.eventprimer.MyView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mv_2"
+            android:text="Hello World!" />
+    </com.example.eventprimer.MyViewGroup3>
+
+</com.example.eventprimer.MyViewGroup>

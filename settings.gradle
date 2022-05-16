@@ -1,5 +1,5 @@
 include ':app'
 include ':fishdemo'
 include ':photoview'
-
+include ':eventprimer'
 include ':colortrackview'

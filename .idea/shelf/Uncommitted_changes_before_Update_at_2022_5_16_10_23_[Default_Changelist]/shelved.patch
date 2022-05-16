@@ -1,0 +1,1031 @@
+Index: eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+new file mode 100644
+--- /dev/null	(date 1652249919822)
++++ b/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1652249919822)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: eventprimer/src/main/java/com/example/eventprimer/MyView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/MyView.java b/eventprimer/src/main/java/com/example/eventprimer/MyView.java
+new file mode 100644
+--- /dev/null	(date 1652266012218)
++++ b/eventprimer/src/main/java/com/example/eventprimer/MyView.java	(date 1652266012218)
+@@ -0,0 +1,46 @@
++package com.example.eventprimer;
++
++import android.content.Context;
++import android.util.AttributeSet;
++import android.util.Log;
++import android.view.MotionEvent;
++import android.view.View;
++
++
++import androidx.annotation.Nullable;
++import androidx.appcompat.widget.AppCompatImageView;
++
++public class MyView extends AppCompatImageView {
++
++    public MyView(Context context) {
++        super(context);
++    }
++
++    public MyView(Context context, @Nullable AttributeSet attrs) {
++        super(context, attrs);
++    }
++
++    public MyView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
++        super(context, attrs, defStyleAttr);
++    }
++
++    @Override
++    public boolean dispatchTouchEvent(MotionEvent event) {
++        Log.e(StringConstants.TAG, "MyView: dispatchTouchEvent");
++        return super.dispatchTouchEvent(event);
++    }
++
++    @Override
++    public boolean onTouchEvent(MotionEvent event) {
++        switch (event.getAction()){
++            case MotionEvent.ACTION_DOWN:
++                break;
++            case MotionEvent.ACTION_UP:
++                break;
++            case MotionEvent.ACTION_MOVE:
++                break;
++        }
++        Log.e(StringConstants.TAG, "MyView: onTouchEvent " + event.getAction() +"\t"+ event.getPointerCount());
++        return true;
++    }
++}
+Index: eventprimer/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/values/themes.xml b/eventprimer/src/main/res/values/themes.xml
+new file mode 100644
+--- /dev/null	(date 1652249919902)
++++ b/eventprimer/src/main/res/values/themes.xml	(date 1652249919902)
+@@ -0,0 +1,16 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Theme.AndroidUI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
++        <!-- Primary brand color. -->
++        <item name="colorPrimary">@color/purple_500</item>
++        <item name="colorPrimaryVariant">@color/purple_700</item>
++        <item name="colorOnPrimary">@color/white</item>
++        <!-- Secondary brand color. -->
++        <item name="colorSecondary">@color/teal_200</item>
++        <item name="colorSecondaryVariant">@color/teal_700</item>
++        <item name="colorOnSecondary">@color/black</item>
++        <!-- Status bar color. -->
++        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
++        <!-- Customize your theme here. -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: eventprimer/src/main/java/com/example/eventprimer/MyViewGroup2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup2.java b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup2.java
+new file mode 100644
+--- /dev/null	(date 1652254795959)
++++ b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup2.java	(date 1652254795959)
+@@ -0,0 +1,36 @@
++package com.example.eventprimer;
++
++import android.content.Context;
++import android.util.AttributeSet;
++import android.util.Log;
++import android.view.MotionEvent;
++import android.view.ViewGroup;
++import android.widget.RelativeLayout;
++
++public class MyViewGroup2 extends RelativeLayout {
++
++
++    public MyViewGroup2(Context context) {
++        super(context);
++    }
++
++    public MyViewGroup2(Context context, AttributeSet attrs) {
++        super(context, attrs);
++    }
++
++    public MyViewGroup2(Context context, AttributeSet attrs, int defStyleAttr) {
++        super(context, attrs, defStyleAttr);
++    }
++
++    @Override
++    public boolean dispatchTouchEvent(MotionEvent ev) {
++        Log.e(StringConstants.TAG, "MyViewGroup2: dispatchTouchEvent");
++        return super.dispatchTouchEvent(ev);
++    }
++
++    @Override
++    public boolean onTouchEvent(MotionEvent event) {
++        Log.e(StringConstants.TAG, "MyViewGroup2: onTouchEvent");
++        return super.onTouchEvent(event);
++    }
++}
+Index: eventprimer/src/main/java/com/example/eventprimer/StringConstants.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/StringConstants.java b/eventprimer/src/main/java/com/example/eventprimer/StringConstants.java
+new file mode 100644
+--- /dev/null	(date 1652250442424)
++++ b/eventprimer/src/main/java/com/example/eventprimer/StringConstants.java	(date 1652250442424)
+@@ -0,0 +1,6 @@
++package com.example.eventprimer;
++
++public class StringConstants {
++
++    public final static String TAG = "event_primer";
++}
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n            <option value=\"$PROJECT_DIR$/photoview\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 3b01ece256fbc6561c158e6edb58789bdce6f628)
++++ b/.idea/gradle.xml	(date 1652249988059)
+@@ -11,6 +11,7 @@
+           <set>
+             <option value="$PROJECT_DIR$" />
+             <option value="$PROJECT_DIR$/app" />
++            <option value="$PROJECT_DIR$/eventprimer" />
+             <option value="$PROJECT_DIR$/photoview" />
+           </set>
+         </option>
+Index: eventprimer/src/main/java/com/example/eventprimer/MyViewGroup.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup.java b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup.java
+new file mode 100644
+--- /dev/null	(date 1652342508386)
++++ b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup.java	(date 1652342508386)
+@@ -0,0 +1,178 @@
++package com.example.eventprimer;
++
++import android.content.Context;
++import android.os.Build;
++import android.util.AttributeSet;
++import android.util.Log;
++import android.view.MotionEvent;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.LinearLayout;
++import android.widget.RelativeLayout;
++
++import androidx.annotation.RequiresApi;
++import androidx.core.view.MotionEventCompat;
++
++import java.lang.reflect.InvocationTargetException;
++import java.lang.reflect.Method;
++
++public class MyViewGroup extends LinearLayout {
++
++    private MyViewGroup2 rl2;
++    private MyViewGroup3 rl3;
++    private View currentView;
++    private boolean isIntercept;
++
++    public MyViewGroup(Context context) {
++        this(context,null);
++    }
++
++    public MyViewGroup(Context context, AttributeSet attrs) {
++        this(context, attrs,0);
++    }
++
++    public MyViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
++        super(context, attrs, defStyleAttr);
++    }
++
++    @Override
++    public boolean dispatchTouchEvent(MotionEvent ev) {
++        rl2 = findViewById(R.id.mvg_2);
++        rl3 = findViewById(R.id.mvg_3);
++        Log.e(StringConstants.TAG, "MyViewGroup: dispatchTouchEvent");
++        return super.dispatchTouchEvent(ev);
++    }
++
++
++    @RequiresApi(api = Build.VERSION_CODES.Q)
++    @Override
++    public boolean onInterceptTouchEvent(MotionEvent ev) {
++        int a = ev.getPointerCount();
++        if (a == 1){
++            if (ev.getAction() == MotionEvent.ACTION_DOWN){
++                if (rl2.getTop() < ev.getY() && rl2.getBottom() > ev.getY()){
++                    Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent rl2 instance");
++                    currentView = rl2;
++                }else if (rl3.getTop() < ev.getY() && rl3.getBottom() > ev.getY()){
++                    Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent rl3 instance");
++                    currentView = rl3;
++                }
++                Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent getActionIndex " + ev.getActionIndex());
++
++            }
++        }
++//        Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent " + ev.getActionMasked() + ev.findPointerIndex(1));
++        if (a >= 2 && ev.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN){
++            Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent getActionIndex " + ev.getActionIndex());
++            if ((currentView instanceof MyViewGroup2) && rl2.getTop() < ev.getY(ev.findPointerIndex(1)) && rl2.getBottom() > ev.getY(ev.findPointerIndex(1))){
++                Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent rl2");
++            }else if ((currentView instanceof MyViewGroup3) && rl3.getTop() < ev.getY(ev.findPointerIndex(1)) && rl3.getBottom() > ev.getY(ev.findPointerIndex(1))){
++                Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent rl3");
++            }else {
++                isIntercept = true;
++                Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent true");
++                return true;
++            }
++        }
++        Log.e(StringConstants.TAG, "MyViewGroup: onInterceptTouchEvent false");
++        return super.onInterceptTouchEvent(ev);
++    }
++
++
++    @Override
++    public boolean onTouchEvent(MotionEvent event) {
++
++        int a = event.getPointerCount();
++        if (a >= 2){
++            for (int i = 0; i < a; i++) {
++                Log.e(StringConstants.TAG, "MyViewGroup: onTouchEvent getActionIndex " + event.getActionIndex());
++            }
++            Log.e(StringConstants.TAG, "MyViewGroup: onTouchEvent getActionIndex " + event.findPointerIndex(0) + "\t" + event.findPointerIndex(1));
++            Log.e(StringConstants.TAG, "MyViewGroup: onTouchEvent 调用\t" + event.getPointerId(0) + "\t" + event.getPointerId(1) + "\t" + event.getActionIndex());
++
++            split(event,event.findPointerIndex(0));
++            return true;
++        }
++        return super.onTouchEvent(event);
++    }
++
++    public final MotionEvent split(MotionEvent oldEvent, int idBits) {
++        MotionEvent ev = MotionEvent.obtainNoHistory(oldEvent);
++        Log.e(StringConstants.TAG, "MyViewGroup: onTouchEvent getActionIndex aaaaa" + ev.getPointerCount());
++
++//        synchronized (gSharedTempLock) {
++//            final int oldPointerCount = nativeGetPointerCount(mNativePtr);
++//            ensureSharedTempPointerCapacity(oldPointerCount);
++//            final MotionEvent.PointerProperties[] pp = gSharedTempPointerProperties;
++//            final MotionEvent.PointerCoords[] pc = gSharedTempPointerCoords;
++//            final int[] map = gSharedTempPointerIndexMap;
++//
++//            final int oldAction = nativeGetAction(mNativePtr);
++//            final int oldActionMasked = oldAction & ACTION_MASK;
++//            final int oldActionPointerIndex = (oldAction & ACTION_POINTER_INDEX_MASK)
++//                    >> ACTION_POINTER_INDEX_SHIFT;
++//            int newActionPointerIndex = -1;
++//            int newPointerCount = 0;
++//            for (int i = 0; i < oldPointerCount; i++) {
++//                nativeGetPointerProperties(mNativePtr, i, pp[newPointerCount]);
++//                final int idBit = 1 << pp[newPointerCount].id;
++//                if ((idBit & idBits) != 0) {
++//                    if (i == oldActionPointerIndex) {
++//                        newActionPointerIndex = newPointerCount;
++//                    }
++//                    map[newPointerCount] = i;
++//                    newPointerCount += 1;
++//                }
++//            }
++//
++//            if (newPointerCount == 0) {
++//                throw new IllegalArgumentException("idBits did not match any ids in the event");
++//            }
++//
++//            final int newAction;
++//            if (oldActionMasked == ACTION_POINTER_DOWN || oldActionMasked == ACTION_POINTER_UP) {
++//                if (newActionPointerIndex < 0) {
++//                    // An unrelated pointer changed.
++//                    newAction = ACTION_MOVE;
++//                } else if (newPointerCount == 1) {
++//                    // The first/last pointer went down/up.
++//                    newAction = oldActionMasked == ACTION_POINTER_DOWN
++//                            ? ACTION_DOWN
++//                            : (getFlags() & FLAG_CANCELED) == 0 ? ACTION_UP : ACTION_CANCEL;
++//                } else {
++//                    // A secondary pointer went down/up.
++//                    newAction = oldActionMasked
++//                            | (newActionPointerIndex << ACTION_POINTER_INDEX_SHIFT);
++//                }
++//            } else {
++//                // Simple up/down/cancel/move or other motion action.
++//                newAction = oldAction;
++//            }
++//
++//            final int historySize = nativeGetHistorySize(mNativePtr);
++//            for (int h = 0; h <= historySize; h++) {
++//                final int historyPos = h == historySize ? HISTORY_CURRENT : h;
++//
++//                for (int i = 0; i < newPointerCount; i++) {
++//                    nativeGetPointerCoords(mNativePtr, map[i], historyPos, pc[i]);
++//                }
++//
++//                final long eventTimeNanos = nativeGetEventTimeNanos(mNativePtr, historyPos);
++//                if (h == 0) {
++//                    ev.initialize(nativeGetDeviceId(mNativePtr), nativeGetSource(mNativePtr),
++//                            nativeGetDisplayId(mNativePtr),
++//                            newAction, nativeGetFlags(mNativePtr),
++//                            nativeGetEdgeFlags(mNativePtr), nativeGetMetaState(mNativePtr),
++//                            nativeGetButtonState(mNativePtr), nativeGetClassification(mNativePtr),
++//                            nativeGetXOffset(mNativePtr), nativeGetYOffset(mNativePtr),
++//                            nativeGetXPrecision(mNativePtr), nativeGetYPrecision(mNativePtr),
++//                            nativeGetDownTimeNanos(mNativePtr), eventTimeNanos,
++//                            newPointerCount, pp, pc);
++//                } else {
++//                    nativeAddBatch(ev.mNativePtr, eventTimeNanos, pc, 0);
++//                }
++//            }
++            return ev;
++//        }
++    }
++}
+Index: eventprimer/src/main/java/com/example/eventprimer/MyViewGroup3.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup3.java b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup3.java
+new file mode 100644
+--- /dev/null	(date 1652264282572)
++++ b/eventprimer/src/main/java/com/example/eventprimer/MyViewGroup3.java	(date 1652264282572)
+@@ -0,0 +1,38 @@
++package com.example.eventprimer;
++
++import android.content.Context;
++import android.util.AttributeSet;
++import android.util.Log;
++import android.view.MotionEvent;
++import android.widget.RelativeLayout;
++
++public class MyViewGroup3 extends RelativeLayout {
++
++    MyView my2;
++
++    public MyViewGroup3(Context context) {
++        super(context);
++    }
++
++    public MyViewGroup3(Context context, AttributeSet attrs) {
++        super(context, attrs);
++    }
++
++    public MyViewGroup3(Context context, AttributeSet attrs, int defStyleAttr) {
++        super(context, attrs, defStyleAttr);
++    }
++
++    @Override
++    public boolean dispatchTouchEvent(MotionEvent ev) {
++        my2 = findViewById(R.id.mv_2);
++        Log.e(StringConstants.TAG, "MyViewGroup3: dispatchTouchEvent");
++        return super.dispatchTouchEvent(ev);
++    }
++
++    @Override
++    public boolean onTouchEvent(MotionEvent event) {
++        my2.onTouchEvent(event);
++        Log.e(StringConstants.TAG, "MyViewGroup3: onTouchEvent");
++        return true;
++    }
++}
+Index: eventprimer/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/proguard-rules.pro b/eventprimer/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1652249918607)
++++ b/eventprimer/proguard-rules.pro	(date 1652249918607)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+new file mode 100644
+--- /dev/null	(date 1652249919466)
++++ b/eventprimer/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1652249919466)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: eventprimer/src/androidTest/java/com/example/eventprimer/ExampleInstrumentedTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/androidTest/java/com/example/eventprimer/ExampleInstrumentedTest.kt b/eventprimer/src/androidTest/java/com/example/eventprimer/ExampleInstrumentedTest.kt
+new file mode 100644
+--- /dev/null	(date 1652249919388)
++++ b/eventprimer/src/androidTest/java/com/example/eventprimer/ExampleInstrumentedTest.kt	(date 1652249919388)
+@@ -0,0 +1,24 @@
++package com.example.eventprimer
++
++import androidx.test.platform.app.InstrumentationRegistry
++import androidx.test.ext.junit.runners.AndroidJUnit4
++
++import org.junit.Test
++import org.junit.runner.RunWith
++
++import org.junit.Assert.*
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++@RunWith(AndroidJUnit4::class)
++class ExampleInstrumentedTest {
++    @Test
++    fun useAppContext() {
++        // Context of the app under test.
++        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
++        assertEquals("com.example.eventprimer", appContext.packageName)
++    }
++}
+\ No newline at end of file
+Index: eventprimer/src/main/res/drawable-v24/ic_launcher_foreground.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/drawable-v24/ic_launcher_foreground.xml b/eventprimer/src/main/res/drawable-v24/ic_launcher_foreground.xml
+new file mode 100644
+--- /dev/null	(date 1652249919802)
++++ b/eventprimer/src/main/res/drawable-v24/ic_launcher_foreground.xml	(date 1652249919802)
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+Index: eventprimer/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/AndroidManifest.xml b/eventprimer/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1652249920209)
++++ b/eventprimer/src/main/AndroidManifest.xml	(date 1652249920209)
+@@ -0,0 +1,23 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.example.eventprimer">
++
++    <application
++        android:allowBackup="true"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.AndroidUI">
++        <activity
++            android:name=".MainActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+\ No newline at end of file
+Index: eventprimer/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/values/colors.xml b/eventprimer/src/main/res/values/colors.xml
+new file mode 100644
+--- /dev/null	(date 1652249919933)
++++ b/eventprimer/src/main/res/values/colors.xml	(date 1652249919933)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="purple_200">#FFBB86FC</color>
++    <color name="purple_500">#FF6200EE</color>
++    <color name="purple_700">#FF3700B3</color>
++    <color name="teal_200">#FF03DAC5</color>
++    <color name="teal_700">#FF018786</color>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++</resources>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ASMIdeaPluginConfiguration\">\r\n    <asm skipDebug=\"false\" skipFrames=\"false\" skipCode=\"false\" expandFrames=\"false\" />\r\n    <groovy codeStyle=\"LEGACY\" />\r\n  </component>\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/androidproject/AndroidUI/photoview/src/main/res/layout/activity_main.xml\" value=\"0.1875\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"NullableNotNullManager\">\r\n    <option name=\"myDefaultNullable\" value=\"android.support.annotation.Nullable\" />\r\n    <option name=\"myDefaultNotNull\" value=\"android.support.annotation.NonNull\" />\r\n    <option name=\"myNullables\">\r\n      <value>\r\n        <list size=\"14\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.Nullable\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nullable\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"javax.annotation.CheckForNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.Nullable\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.Nullable\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.Nullable\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNullable\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.Nullable\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.Nullable\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableDecl\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NullableType\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.Nullable\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"io.reactivex.annotations.Nullable\" />\r\n          <item index=\"13\" class=\"java.lang.String\" itemvalue=\"io.reactivex.rxjava3.annotations.Nullable\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n    <option name=\"myNotNulls\">\r\n      <value>\r\n        <list size=\"13\">\r\n          <item index=\"0\" class=\"java.lang.String\" itemvalue=\"org.jetbrains.annotations.NotNull\" />\r\n          <item index=\"1\" class=\"java.lang.String\" itemvalue=\"javax.annotation.Nonnull\" />\r\n          <item index=\"2\" class=\"java.lang.String\" itemvalue=\"edu.umd.cs.findbugs.annotations.NonNull\" />\r\n          <item index=\"3\" class=\"java.lang.String\" itemvalue=\"android.support.annotation.NonNull\" />\r\n          <item index=\"4\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.NonNull\" />\r\n          <item index=\"5\" class=\"java.lang.String\" itemvalue=\"androidx.annotation.RecentlyNonNull\" />\r\n          <item index=\"6\" class=\"java.lang.String\" itemvalue=\"com.android.annotations.NonNull\" />\r\n          <item index=\"7\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.qual.NonNull\" />\r\n          <item index=\"8\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullDecl\" />\r\n          <item index=\"9\" class=\"java.lang.String\" itemvalue=\"org.checkerframework.checker.nullness.compatqual.NonNullType\" />\r\n          <item index=\"10\" class=\"java.lang.String\" itemvalue=\"org.eclipse.jdt.annotation.NonNull\" />\r\n          <item index=\"11\" class=\"java.lang.String\" itemvalue=\"io.reactivex.annotations.NonNull\" />\r\n          <item index=\"12\" class=\"java.lang.String\" itemvalue=\"io.reactivex.rxjava3.annotations.NonNull\" />\r\n        </list>\r\n      </value>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 3b01ece256fbc6561c158e6edb58789bdce6f628)
++++ b/.idea/misc.xml	(date 1652251423506)
+@@ -7,6 +7,7 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
++        <entry key="..\:/androidproject/AndroidUI/eventprimer/src/main/res/layout/activity_main.xml" value="0.22" />
+         <entry key="..\:/androidproject/AndroidUI/photoview/src/main/res/layout/activity_main.xml" value="0.1875" />
+       </map>
+     </option>
+@@ -54,7 +55,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: eventprimer/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/values-night/themes.xml b/eventprimer/src/main/res/values-night/themes.xml
+new file mode 100644
+--- /dev/null	(date 1652249919961)
++++ b/eventprimer/src/main/res/values-night/themes.xml	(date 1652249919961)
+@@ -0,0 +1,16 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Theme.AndroidUI" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
++        <!-- Primary brand color. -->
++        <item name="colorPrimary">@color/purple_200</item>
++        <item name="colorPrimaryVariant">@color/purple_700</item>
++        <item name="colorOnPrimary">@color/black</item>
++        <!-- Secondary brand color. -->
++        <item name="colorSecondary">@color/teal_200</item>
++        <item name="colorSecondaryVariant">@color/teal_200</item>
++        <item name="colorOnSecondary">@color/black</item>
++        <!-- Status bar color. -->
++        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
++        <!-- Customize your theme here. -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: eventprimer/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/build.gradle b/eventprimer/build.gradle
+new file mode 100644
+--- /dev/null	(date 1652249920182)
++++ b/eventprimer/build.gradle	(date 1652249920182)
+@@ -0,0 +1,43 @@
++plugins {
++    id 'com.android.application'
++    id 'org.jetbrains.kotlin.android'
++}
++
++android {
++    compileSdkVersion 32
++
++    defaultConfig {
++        applicationId "com.example.eventprimer"
++        minSdkVersion 21
++        targetSdkVersion 32
++        versionCode 1
++        versionName "1.0"
++
++        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            minifyEnabled false
++            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
++        }
++    }
++    compileOptions {
++        sourceCompatibility JavaVersion.VERSION_1_8
++        targetCompatibility JavaVersion.VERSION_1_8
++    }
++    kotlinOptions {
++        jvmTarget = '1.8'
++    }
++}
++
++dependencies {
++
++    implementation 'androidx.core:core-ktx:1.6.0'
++    implementation 'androidx.appcompat:appcompat:1.3.0'
++    implementation 'com.google.android.material:material:1.4.0'
++    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
++    testImplementation 'junit:junit:4.13.2'
++    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
++    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
++}
+\ No newline at end of file
+Index: eventprimer/src/test/java/com/example/eventprimer/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/test/java/com/example/eventprimer/ExampleUnitTest.kt b/eventprimer/src/test/java/com/example/eventprimer/ExampleUnitTest.kt
+new file mode 100644
+--- /dev/null	(date 1652249919433)
++++ b/eventprimer/src/test/java/com/example/eventprimer/ExampleUnitTest.kt	(date 1652249919433)
+@@ -0,0 +1,17 @@
++package com.example.eventprimer
++
++import org.junit.Test
++
++import org.junit.Assert.*
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++class ExampleUnitTest {
++    @Test
++    fun addition_isCorrect() {
++        assertEquals(4, 2 + 2)
++    }
++}
+\ No newline at end of file
+Index: eventprimer/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/values/strings.xml b/eventprimer/src/main/res/values/strings.xml
+new file mode 100644
+--- /dev/null	(date 1652249920007)
++++ b/eventprimer/src/main/res/values/strings.xml	(date 1652249920007)
+@@ -0,0 +1,3 @@
++<resources>
++    <string name="app_name">EventPrimer</string>
++</resources>
+\ No newline at end of file
+Index: eventprimer/src/main/java/com/example/eventprimer/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/java/com/example/eventprimer/MainActivity.kt b/eventprimer/src/main/java/com/example/eventprimer/MainActivity.kt
+new file mode 100644
+--- /dev/null	(date 1652255689578)
++++ b/eventprimer/src/main/java/com/example/eventprimer/MainActivity.kt	(date 1652255689578)
+@@ -0,0 +1,24 @@
++package com.example.eventprimer
++
++import androidx.appcompat.app.AppCompatActivity
++import android.os.Bundle
++import android.util.Log
++import android.view.MotionEvent
++import com.example.eventprimer.StringConstants.TAG;
++
++class MainActivity : AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_main)
++    }
++
++    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
++        Log.e(TAG, "MainActivity : dispatchTouchEvent: ")
++        return super.dispatchTouchEvent(ev)
++    }
++
++    override fun onTouchEvent(event: MotionEvent?): Boolean {
++        Log.e(TAG, "MainActivity : onTouchEvent: ")
++        return super.onTouchEvent(event)
++    }
++}
+\ No newline at end of file
+Index: eventprimer/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/.gitignore b/eventprimer/.gitignore
+new file mode 100644
+--- /dev/null	(date 1652249918472)
++++ b/eventprimer/.gitignore	(date 1652249918472)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: eventprimer/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/layout/activity_main.xml b/eventprimer/src/main/res/layout/activity_main.xml
+new file mode 100644
+--- /dev/null	(date 1652261601083)
++++ b/eventprimer/src/main/res/layout/activity_main.xml	(date 1652261601083)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="utf-8"?>
++<com.example.eventprimer.MyViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/white"
++    android:orientation="vertical"
++    tools:context=".MainActivity">
++
++    <com.example.eventprimer.MyViewGroup2
++        android:layout_width="match_parent"
++        android:background="@color/black"
++        android:id="@+id/mvg_2"
++        android:layout_height="500dp">
++        <com.example.eventprimer.MyView
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:id="@+id/mv_1"
++            android:text="Hello World!" />
++    </com.example.eventprimer.MyViewGroup2>
++
++    <com.example.eventprimer.MyViewGroup3
++        android:layout_width="match_parent"
++        android:layout_height="500dp"
++        android:id="@+id/mvg_3"
++        android:background="@color/white">
++        <com.example.eventprimer.MyView
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:id="@+id/mv_2"
++            android:text="Hello World!" />
++    </com.example.eventprimer.MyViewGroup3>
++
++</com.example.eventprimer.MyViewGroup>
+\ No newline at end of file
+Index: eventprimer/src/main/res/drawable/ic_launcher_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/eventprimer/src/main/res/drawable/ic_launcher_background.xml b/eventprimer/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+--- /dev/null	(date 1652249919774)
++++ b/eventprimer/src/main/res/drawable/ic_launcher_background.xml	(date 1652249919774)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>include ':app'\r\ninclude ':photoview'\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle b/settings.gradle
+--- a/settings.gradle	(revision 3b01ece256fbc6561c158e6edb58789bdce6f628)
++++ b/settings.gradle	(date 1652249919030)
+@@ -1,2 +1,3 @@
+ include ':app'
+ include ':photoview'
++include ':eventprimer'
